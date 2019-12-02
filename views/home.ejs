@@ -1,4 +1,34 @@
 <link rel="stylesheet" type="text/css" href="css/styles.css" />
+<style>
+  /* A Dark Overlay that sits between the main page and the modal so the Modal pops out */
+  .popup-position {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+
+    /* The Modal Wrapper */
+  }
+  #popup-wrapper {
+    text-align: left;
+  }
+
+  /* The Modal Container */
+  #popup-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    margin: 70px auto;
+
+    /* a {
+      cursor: pointer;
+    } */
+  }
+</style>
 <link
   rel="stylesheet"
   href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -23,5 +53,53 @@
     <button type="button" class="btn btn-outline"><--</button>
 
     <button type="button" class="btn btn-outline">--></button>
+  </div>
+</div>
+<!-- Trigger the modal with a button -->
+<div class="tutorial-button">
+  <button
+    type="button"
+    class="btn btn-info btn-lg"
+    data-toggle="modal"
+    data-target="#myModal"
+  >
+    Tutorial
+  </button>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Here's How:</h4>
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+      <div
+        class="modal-body"
+        style="color: rgb(21, 51, 52) !important; padding: 8% !important;"
+      >
+        <ol>
+          <li>An image will be presented on the screen for you to view.</li>
+          <li>Our face analyzer will interpret your reaction to the image.</li>
+          <li>
+            Your results will appear, showing the emotions that you displayed in
+            response to the image.
+          </li>
+          <li>
+            That image's data will appear so that you can compare your emotional
+            response to that of the average user.
+          </li>
+        </ol>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          I'm Ready!
+        </button>
+      </div>
+    </div>
   </div>
 </div>
