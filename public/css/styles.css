@@ -17,7 +17,7 @@ li,
 a {
   font-family: Arial;
   font-size: 120%;
-  color: #edf0f1;
+  color: #edf0f1 !important;
   text-decoration: none;
 }
 
@@ -51,14 +51,13 @@ li a:hover:after {
 }
 
 .navbar_links li a:hover {
-  color: #da7393;
+  color: #da7393 !important;
   text-decoration: none;
 }
 
 h1 {
-  color: #376e6f;
   color: #ffffff;
-  font-size: 500%;
+  font-size: 500% !important;
   text-shadow: 1px 1px 2px #da7b93;
 }
 
