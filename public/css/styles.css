@@ -59,6 +59,7 @@ h1 {
   color: #ffffff;
   font-size: 500% !important;
   text-shadow: 1px 1px 2px #da7b93;
+  padding-bottom: 1%;
 }
 
 .step {
@@ -75,6 +76,55 @@ h1 {
   color: #ffffff;
 }
 
-.tutorial-button {
+.tutorial-button,
+.start-button {
   text-align: center !important;
+  padding-top: 5%;
+}
+
+.tutorial-step {
+  text-align: center;
+  padding: 4%;
+}
+
+.tutorial-image {
+  width: 75%;
+  height: 75%;
+  border-radius: 2%;
+  border-style: solid;
+  border-color: rgb(21, 51, 52);
+}
+
+.banner {
+  font-size: 150%;
+  color: #ffffff;
+  padding: 1%;
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    rgba(55, 110, 111, 1) 0%,
+    rgba(74, 145, 146, 1) 36%
+  );
+}
+
+.btn-info,
+.btn-info:hover,
+.btn-info:active,
+.btn-info:visited,
+.btn-info:focus {
+  background-color: #8064a2;
+  border-color: #8064a2;
+}
+
+.modal.left {
+  margin: 2%;
+  width: 25%;
+  transform: translateX(0%);
+}
+
+.modal.right {
+  margin: 2%;
+  margin-left: 70%;
+  width: 25%;
+  transform: translateX(0%);
 }
