@@ -2,7 +2,9 @@
   margin: 0;
   padding: 0;
 }
-
+body {
+  overflow: auto;
+}
 html,
 body {
   background: linear-gradient(
@@ -109,13 +111,17 @@ h1 {
   );
 }
 
-.btn-info,
+/* .btn-info,
 .btn-info:hover,
 .btn-info:active,
 .btn-info:visited,
 .btn-info:focus {
   background-color: #8064a2;
   border-color: #8064a2;
+} */
+
+#appModal {
+  overflow-y: auto !important;
 }
 
 .modal.left {
@@ -129,4 +135,9 @@ h1 {
   margin-left: 70%;
   width: 25%;
   transform: translateX(0%);
+}
+
+.meme {
+  max-width: 100%;
+  height: auto;
 }

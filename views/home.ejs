@@ -5,6 +5,11 @@
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
   crossorigin="anonymous"
 />
+<style>
+  body {
+    overflow: hidden !important;
+  }
+</style>
 <nav>
   <ul class="navbar_links">
     <li><a href="/">Home</a></li>
@@ -104,10 +109,14 @@
         class="modal-body"
         style="color: rgb(21, 51, 52) !important; padding: 8% !important; text-align: center;"
       >
-        <div class="card card-body text-center">
-          <img src="Meme3.jpg" class="card-img-top" alt="How did u get here" />
+        <div id="meme-container" class="card card-body text-center">
+          <img
+            id="1"
+            src="Meme1.jpg"
+            class="meme card-img-top"
+            alt="How did u get here"
+          />
         </div>
-        <button type="button" class="btn btn-outline">Gimme a new meme!</button>
         <div id="results-buttons">
           <button
             type="button"
@@ -126,6 +135,9 @@
             See how you compare
           </button>
         </div>
+        <button id="new-meme-button" type="button" class="btn btn-outline">
+          Gimme a new meme!
+        </button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">
@@ -197,3 +209,4 @@
     </div>
   </div>
 </div>
+<script src="js/new-meme-button.js"></script>
