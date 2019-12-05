@@ -81,9 +81,15 @@ h1 {
 }
 
 .tutorial-button,
-.start-button {
+.start-button,
+#new-meme-button-div {
   text-align: center !important;
-  padding-top: 5%;
+  padding-top: 2%;
+}
+
+#new-meme-button.disabled {
+  cursor: not-allowed;
+  border: none;
 }
 
 .tutorial-step {
@@ -116,7 +122,16 @@ h1 {
 }
 
 .modal {
-  color: rgb(61, 167, 152);
+  color: rgb(211, 152, 113);
+  text-shadow: none !important;
+}
+
+.btn {
+  text-shadow: none;
+}
+
+.modal,
+h4 {
   text-shadow: none !important;
 }
 
@@ -158,49 +173,15 @@ h1 {
 }
 
 .btn-info:hover {
-  border-color: #ffffff !important;
+  border-color: rgba(232, 168, 124, 1) !important;
 
   color: #ffffff !important;
 }
 
-.row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  height: 100%;
-  width: 100%;
-  margin: 0;
+#flowchart {
+  text-align: center;
 }
-.column {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  flex: 1;
-  height: 100%;
-  width: 100%;
-  padding-top: 2%;
-}
-.column.left {
-}
-.center {
-}
-
-.left-arrow {
-  width: 45%;
-  height: 45%;
-  transform: translate(123%, 15%);
-  opacity: 0.55;
-}
-
-#left-arrow-2 {
-  width: 35%;
-  height: 35%;
-  transform: translate(187%, 80%) !important;
-}
-
-.right-arrow {
-  width: 38%;
-  height: 38%;
-  transform: translate(-2%, 113%);
-  opacity: 1;
+#flowchart-img {
+  width: 70%;
+  height: 70%;
 }

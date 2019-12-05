@@ -1,16 +1,15 @@
 const express = require("express");
 const app = express();
 const expressLayout = require("express-ejs-layouts");
-const mongoose = require('mongoose');
-
+const mongoose = require("mongoose");
 
 //DB config
-const db = require('./config/keys').MongoURI;
+const db = require("./config/keys").MongoURI;
 
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Mongodb Connected...'))
-  .catch(err => console.log(err)
-);
+mongoose
+  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Mongodb Connected..."))
+  .catch(err => console.log(err));
 
 /*Adding and finding in db*/
 
@@ -22,7 +21,7 @@ var memeRatingSchema = new mongoose.Schema({
   contempt: Number,
   anger: Number,
   fear: Number,
-  suprise : Number
+  suprise: Number
 });
 
 var memeRating = mongoose.model("memeRating", memeRatingSchema);
@@ -47,7 +46,7 @@ var memeRating = mongoose.model("memeRating", memeRatingSchema);
 
 //find all existing ratings from the database
 memeRating.find({}, function(err, ratings) {
-  if(err) {
+  if (err) {
     console.log("SOMETHING WENT WRONG IN FIND");
   } else {
     console.log("ALL RATINGS RETRIVED");
