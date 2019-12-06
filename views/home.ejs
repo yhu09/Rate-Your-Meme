@@ -5,6 +5,9 @@
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
   crossorigin="anonymous"
 />
+<script src="https://download.affectiva.com/js/3.2.1/affdex.js"></script>
+<script src="./js/emotions.js"></script>
+
 <style>
   body {
     overflow: hidden !important;
@@ -42,6 +45,7 @@
     class="btn btn-info btn-lg"
     data-toggle="modal"
     data-target="#appModal"
+    onclick="detector.start()"
   >
     Begin
   </button>
@@ -142,6 +146,7 @@
             id="new-meme-button"
             type="button"
             class="btn btn-info btn-outline"
+            onclick="reset()"
           >
             Gimme a new meme!
           </button>
@@ -173,6 +178,7 @@
         </button>
       </div>
       <div
+        id = "results"
         class="modal-body"
         style="color: rgb(21, 51, 52) !important; padding: 8% !important; text-align: center;"
       >
@@ -187,6 +193,7 @@
   </div>
 </div>
 
+<p><span id="Clock"></span></p>
 <!-- Average Results Modal -->
 <div
   id="avgResultsModal"
