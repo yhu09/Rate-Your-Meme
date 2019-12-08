@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const expressLayout = require("express-ejs-layouts");
 const mongoose = require("mongoose");
+var bodyParser = require("body-parser");
 
 //DB config
 const db = require("./config/keys").MongoURI;
@@ -15,6 +16,7 @@ mongoose
 
 //Rating Schema
 var memeRatingSchema = new mongoose.Schema({
+  meme: String,
   joy: Number,
   sadness: Number,
   disgust: Number,
@@ -27,29 +29,30 @@ var memeRatingSchema = new mongoose.Schema({
 var memeRating = mongoose.model("memeRating", memeRatingSchema);
 
 //Creating an instance from the schema and add to database
-// memeRating.create({
-//   joy: 0,
-//   sadness: 0,
-//   disgust: 0,
-//   contempt: 0,
-//   anger: 0,
-//   fear: 0,
-//   suprise : 0
-// }, function(err, memeRating) {
-//   if(err) {
-//     console.log("SOMETHING WENT WRONG IN CREATE");
-//   } else {
-//     console.log("INSTANCE CREATED");
-//     console.log(memeRating);
-//   }
-// });
+memeRating.create({
+  meme: "Meme0.jpg",
+  joy: 0,
+  sadness: 0,
+  disgust: 0,
+  contempt: 0,
+  anger: 0,
+  fear: 0,
+  suprise : 0
+}, function(err, memeRating) {
+  if(err) {
+    console.log("SOMETHING WENT WRONG IN CREATE");
+  } else {
+    console.log("INSTANCE CREATED");
+    console.log(memeRating);
+  }
+});
 
 //find all existing ratings from the database
 memeRating.find({}, function(err, ratings) {
   if (err) {
     console.log("SOMETHING WENT WRONG IN FIND");
   } else {
-    console.log("ALL RATINGS RETRIVED");
+    console.log("ALL RATINGS RETRIEVED");
     console.log(ratings);
   }
 });
@@ -78,4 +81,20 @@ app.get("*", function(req, res) {
 
 app.listen(5000, function() {
   console.log("server is running...");
+});
+
+// parsing json
+app.use(bodyParser.json());
+
+app.post("/rate", async (request, response) => {
+  try {
+    var ratings = new memeRating(request.body);
+    var result = await ratings.save();
+    console.log("sending rating:");
+    console.log(result);
+    response.send(result);
+  } catch (error) {
+    console.log("error rating");
+    response.status(500).send(error);
+  }
 });
