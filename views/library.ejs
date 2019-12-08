@@ -7,11 +7,9 @@
 />
 
 <style type="text/css">
-  div.gallery {
-    margin: 5px;
+/*  div.gallery {
     float: left;
     width: 18%;
-    margin-right: 17px;
     position: relative; 
   }
   div.gallery img:hover {
@@ -28,7 +26,59 @@
     text-align: center;
     background-color: #ffe1c5;
     position: relative;
+  }*/
+
+/*NEW VERSION*/
+div.gallery {
+  width: 90%;
+}
+
+div.gallery img:hover {
+  border: 2px solid #E8A87C;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+  background-color: #ffe1c5;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 25%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 50%;
+    margin: 6px 0;
   }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 110%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
 </style>
 
 
@@ -43,98 +93,99 @@
 <div class="banner">
   Explore the current rankings of any image in our media library.
 </div>
-<div class="row mt-5"></div>
 
 
-<div class="gallery" style="padding-bottom: 120px">
-    <img src="Meme1.jpg">
-    <div class="desc">Add a description of the image here</div>
 
-    <img src="Meme2.jpg" style="position: relative; top: 30px">
-    <div class="desc" style="position: relative; top: 30px">Add a description of the image here</div>
+<div class="responsive">
+  <div class="gallery">
+      <img src="Meme1.jpg" width="600" height="400">
+      <div class="desc">Add a description of the image here</div>
 
-    <img src="Meme3.gif" style="position: relative; top: 60px">
-    <div class="desc" style="position: relative; top: 60px">Add a description of the image here</div>
+      <img src="Meme2.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
 
-    <img src="Meme4.jpg" style="position: relative; top: 90px">
-    <div class="desc" style="position: relative; top: 90px">Add a description of the image here</div>
+      <img src="Meme3.gif" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
 
-    <img src="Meme5.jpg" style="position: relative; top: 120px;">
-    <div class="desc" style="position: relative; top: 120px;">Add a description of the image here</div>
+      <img src="Meme4.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
+
+      <img src="Meme5.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
+
+      <img src="Meme21.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
+  </div>
 </div>
 
-<div class="gallery" style="padding-bottom: 120px">
-    <img src="Meme6.jpg">
-    <div class="desc">Add a description of the image here</div>
+<div class="responsive">
+  <div class="gallery">
+      <img src="Meme6.jpg" width="600" height="400">
+      <div class="desc">Add a description of the image here</div>
 
-    <img src="Meme7.jpg" style="position: relative; top: 30px">
-    <div class="desc" style="position: relative; top: 30px">Add a description of the image here</div>
+      <img src="Meme7.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
 
-    <img src="Meme8.jpg" style="position: relative; top: 60px">
-    <div class="desc" style="position: relative; top: 60px">Add a description of the image here</div>
+      <img src="Meme8.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
 
-    <img src="Meme9.jpg" style="position: relative; top: 90px">
-    <div class="desc" style="position: relative; top: 90px">Add a description of the image here</div>
+      <img src="Meme9.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
 
-    <img src="Meme10.jpg" style="position: relative; top: 120px;">
-    <div class="desc" style="position: relative; top: 120px;">Add a description of the image here</div>
+      <img src="Meme10.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
+
+      <img src="Meme22.gif" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
+  </div>
 </div>
 
-<div class="gallery" style="padding-bottom: 120px">
-    <img src="Meme11.jpg">
-    <div class="desc">Add a description of the image here</div>
+<div class="responsive">
+  <div class="gallery">
+      <img src="Meme11.jpg" width="600" height="400">
+      <div class="desc">Add a description of the image here</div>
 
-    <img src="Meme12.jpg" style="position: relative; top: 30px">
-    <div class="desc" style="position: relative; top: 30px">Add a description of the image here</div>
+      <img src="Meme12.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
 
-    <img src="Meme13.gif" style="position: relative; top: 60px">
-    <div class="desc" style="position: relative; top: 60px">Add a description of the image here</div>
+      <img src="Meme13.gif" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
 
-    <img src="Meme14.jpg" style="position: relative; top: 90px">
-    <div class="desc" style="position: relative; top: 90px">Add a description of the image here</div>
+      <img src="Meme14.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
 
-    <img src="Meme15.jpg" style="position: relative; top: 120px;">
-    <div class="desc" style="position: relative; top: 120px;">Add a description of the image here</div>
+      <img src="Meme15.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
+
+      <img src="Meme23.gif" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
+  </div>
 </div>
 
+<div class="responsive">
+  <div class="gallery">
+      <img src="Meme16.jpg" width="600" height="400">
+      <div class="desc">Add a description of the image here</div>
 
-<div class="gallery" style="padding-bottom: 120px">
-    <img src="Meme16.jpg">
-    <div class="desc">Add a description of the image here</div>
+      <img src="Meme17.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
 
-    <img src="Meme17.jpg" style="position: relative; top: 30px">
-    <div class="desc" style="position: relative; top: 30px">Add a description of the image here</div>
+      <img src="Meme18.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
 
-    <img src="Meme18.jpg" style="position: relative; top: 60px">
-    <div class="desc" style="position: relative; top: 60px">Add a description of the image here</div>
+      <img src="Meme19.gif" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
 
-    <img src="Meme19.gif" style="position: relative; top: 90px">
-    <div class="desc" style="position: relative; top: 90px">Add a description of the image here</div>
+      <img src="Meme20.gif" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
 
-    <img src="Meme20.gif" style="position: relative; top: 120px;">
-    <div class="desc" style="position: relative; top: 120px;">Add a description of the image here</div>
+      <img src="Meme24.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
+
+      <img src="Meme25.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
+  </div>
 </div>
-
-<div class="gallery" style="padding-bottom: 120px">
-    <img src="Meme21.jpg">
-    <div class="desc">Add a description of the image here</div>
-
-    <img src="Meme22.gif" style="position: relative; top: 30px">
-    <div class="desc" style="position: relative; top: 30px">Add a description of the image here</div>
-
-    <img src="Meme23.gif" style="position: relative; top: 60px">
-    <div class="desc" style="position: relative; top: 60px">Add a description of the image here</div>
-
-    <img src="Meme24.jpg" style="position: relative; top: 90px">
-    <div class="desc" style="position: relative; top: 90px">Add a description of the image here</div>
-
-    <img src="Meme25.jpg" style="position: relative; top: 120px;">
-    <div class="desc" style="position: relative; top: 120px;">Add a description of the image here</div>
-</div>
-
-
-
-
 
 
 
