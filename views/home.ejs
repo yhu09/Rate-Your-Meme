@@ -6,6 +6,7 @@
   crossorigin="anonymous"
 />
 <script src="https://download.affectiva.com/js/3.2.1/affdex.js"></script>
+<script src="./js/jquery-3.4.1.js"></script>
 <script src="./js/emotions.js"></script>
 
 <style>
@@ -16,8 +17,8 @@
 <nav>
   <ul class="navbar_links">
     <li><a href="/">Home</a></li>
-    <li><a href="/library">Library</a></li>
     <li><a href="/about">About</a></li>
+    <li><a href="/library">Library</a></li>
   </ul>
 </nav>
 <h1>Rate ur memes</h1>
@@ -67,7 +68,10 @@
         style="color: rgb(21, 51, 52) !important; padding: 8% !important;"
       >
         <ol>
-          <li>An image will be presented on the screen for you to view.</li>
+          <li>Wait for your webcam to sync up with the app.</li>
+          <li>
+            Once everything is ready, an image will appear on the screen.
+          </li>
           <div class="tutorial-step">
             <img class="tutorial-image" src="Meme2.jpg" alt="Image not found" />
           </div>
@@ -80,12 +84,14 @@
             />
           </div>
           <li>
-            Your results will appear, showing the emotions that you displayed in
+            Once your results are calculated, the "Your Results" button will
+            appear. Click it to view the emotions that you just displayed in
             response to the image.
           </li>
           <li>
-            That image's data will appear so that you can compare your emotional
-            response to that of the average user.
+            Once your results have been factored into the image's existing data,
+            the "See How You Compare" button will appear. Click it to see the
+            emotional response of the average user.
           </li>
         </ol>
       </div>
