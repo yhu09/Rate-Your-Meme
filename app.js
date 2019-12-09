@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const expressLayout = require("express-ejs-layouts");
 const mongoose = require("mongoose");
+var bodyParser = require("body-parser");
 
 //DB config
 const db = require("./config/keys").MongoURI;
@@ -98,7 +99,7 @@ app.post("/rate", async (request, response) => {
 
 app.get("/", async (req, res) => {
   console.log("getting");
-  memeRating.find({"meme": 0}, function(err, ratings) {
+  memeRating.find({ meme: 0 }, function(err, ratings) {
     if (err) {
       console.log("SOMETHING WENT WRONG IN FIND");
     } else {
