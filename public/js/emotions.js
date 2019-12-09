@@ -19,8 +19,8 @@ var avgDisgust = 0;
 var avgAnger = 0;
 var avgFear = 0;
 var avgsurprise = 0;
+var started = false;
 onload = function() {
-  console.log("loaded");
   var container = document.createElement("div");
   container.id = "affdex_elements";
   document.body.appendChild(container);
@@ -65,11 +65,28 @@ onload = function() {
     image,
     timestamp
   ) {
+    /* camera starts working */
+    if (!started) {
+      var img = document.getElementsByClassName("meme")[0];
+      var newUrl = "Meme1.jpg";
+      var gifUrl = "Meme1.gif";
+      img.onerror = function() {
+        this.src = gifUrl;
+      };
+      img.src = newUrl;
+      img.id = "1";
+      started = true;
+
+      var memeButton = document.getElementById("new-meme-button-div");
+      memeButton.innerHTML =
+        "<button id='new-meme-button' type='button' class='btn btn-info btn-outline' onclick='reset()'>Gimme a new meme!</button>";
+    }
+
     for (var key in faces) {
       var value = faces[key];
       var emotions = value["emotions"];
       // console.log(rated);
-      if(!rated){
+      if (!rated) {
         rateMeme(emotions);
         // console.log(emotions);
       }
@@ -86,12 +103,10 @@ onload = function() {
 
 function clockTick() {
   clock = clock + 0.01;
-  document.getElementById("Clock").innerHTML =
-    "Time: " + clock.toFixed(2);
+  document.getElementById("Clock").innerHTML = "Time: " + clock.toFixed(2);
 }
 
 function rateMeme(emotions) {
-  console.log("A");
   var engagement = emotions.engagement;
   if (engagement > 50 && !engaged) {
     totalJoy = 0;
@@ -107,9 +122,8 @@ function rateMeme(emotions) {
     engaged = false;
     endtime = clock;
     clearInterval(timer);
-    if (clock > 2)
-     rated = true;
-   clock = 0;
+    if (clock > 0.3) rated = true;
+    clock = 0;
   }
   if (engaged) {
     ticks++;
@@ -128,8 +142,7 @@ function rateMeme(emotions) {
     // console.log("Total Fear:" + totalFear);
     // console.log("Total Suprise:" + totalSurprise);
   } else {
-    if (ticks == 0)
-      return;
+    if (ticks == 0) return;
     interval = endtime - starttime;
     avgJoy = (totalJoy / ticks).toFixed(2);
     avgSadness = (totalSadness / ticks).toFixed(2);
@@ -143,7 +156,7 @@ function rateMeme(emotions) {
     // console.log("Average Disgust: " + avgDisgust);
     ticks = 0;
     console.log("here");
-    if(rated) {
+    if (rated) {
       console.log("YESITSRATED");
      const oldId = document.getElementsByClassName("meme")[0].id;
      var newId = parseInt(oldId) + 1;
@@ -155,10 +168,24 @@ function rateMeme(emotions) {
 }
 
 function showResult() {
+  var yourButton = document.getElementById("your-results-btn-span");
+  yourButton.innerHTML =
+    "<button type='button' class='btn btn-outline btn-default' data-toggle='modal' data-target='#userResultsModal' style='color: rgb(211, 152, 113); text-shadow: none;'>Your Results</button>";
   var result = document.getElementById("results");
-  results.innerHTML = ("Joy: " + avgJoy + "<br /> Sadness: " + avgSadness
-  + "<br />" + "Disgust: " + avgDisgust + "<br /> Anger: " + avgAnger
-  + "<br /> Fear: " + avgFear + "<br /> Suprise: " + avgSurprise);
+  results.innerHTML =
+    "Joy: " +
+    avgJoy +
+    "<br /> Sadness: " +
+    avgSadness +
+    "<br />" +
+    "Disgust: " +
+    avgDisgust +
+    "<br /> Anger: " +
+    avgAnger +
+    "<br /> Fear: " +
+    avgFear +
+    "<br /> Suprise: " +
+    avgSurprise;
 }
 
 function reset() {

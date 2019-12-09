@@ -172,8 +172,29 @@ h4 {
   color: #ffffff !important;
 }
 
+.btn-default,
+.btn-default:focus,
+.btn-default:active,
+.open .dropdown-toggle.btn-default {
+  background-image: linear-gradient(
+    90deg,
+    rgba(232, 168, 124, 1) 57%,
+    rgba(232, 168, 124, 1) 100%
+  ) !important;
+
+  border-color: rgba(232, 168, 124, 1) !important;
+
+  color: #ffffff !important;
+}
+
 .btn-info:hover {
   border-color: rgba(232, 168, 124, 1) !important;
+
+  color: #ffffff !important;
+}
+
+.btn-default:hover {
+  border-color: rgba(133, 220, 184, 1) !important;
 
   color: #ffffff !important;
 }
@@ -184,4 +205,19 @@ h4 {
 #flowchart-img {
   width: 70%;
   height: 70%;
+}
+
+.loading-symbol {
+  width: 20%;
+  height: 20%;
+}
+
+#results-buttons {
+  padding: 5%;
+}
+
+#your-results-btn-span,
+#avg-results-btn-span {
+  margin-left: 4%;
+  margin-right: 4%;
 }

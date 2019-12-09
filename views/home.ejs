@@ -43,7 +43,7 @@
 <div class="start-button">
   <button
     type="button"
-    class="btn btn-info btn-lg"
+    class="btn btn-default btn-lg"
     data-toggle="modal"
     data-target="#appModal"
     onclick="detector.start()"
@@ -116,41 +116,37 @@
       >
         <div id="meme-container" class="card card-body text-center">
           <img
-            id="1"
-            src="Meme1.jpg"
+            id="0"
+            src="loading-camera.gif"
             class="meme card-img-top"
             alt="How did u get here"
           />
         </div>
         <div id="results-buttons">
-          <button
-            type="button"
-            class="btn btn-outline"
-            data-toggle="modal"
-            data-target="#userResultsModal"
-            style="color: rgb(211, 152, 113); text-shadow: none;"
-          >
-            <b>Your Results</b>
-          </button>
-          <button
-            type="button"
-            class="btn btn-outline"
-            data-toggle="modal"
-            data-target="#avgResultsModal"
-            style="color: rgb(211, 152, 113); text-shadow: none;"
-          >
-            <b>See How You Compare!</b>
-          </button>
+          <span id="your-results-btn-span"
+            ><img
+              class="loading-symbol"
+              src="loading-crop.gif"
+              alt="Image not found"
+          /></span>
+          <span id="avg-results-btn-span">
+            <button
+              type="button"
+              class="btn btn-outline btn-default"
+              data-toggle="modal"
+              data-target="#avgResultsModal"
+              style="color: rgb(211, 152, 113); text-shadow: none;"
+            >
+              See How You Compare!
+            </button>
+          </span>
         </div>
         <div id="new-meme-button-div">
-          <button
-            id="new-meme-button"
-            type="button"
-            class="btn btn-info btn-outline"
-            onclick="reset()"
-          >
-            Gimme a new meme!
-          </button>
+          <img
+            class="loading-symbol"
+            src="loading-crop.gif"
+            alt="Image not found"
+          />
         </div>
       </div>
       <div class="modal-footer">
@@ -179,14 +175,19 @@
         </button>
       </div>
       <div
-        id = "results"
+        id="results"
         class="modal-body"
         style="color: rgb(21, 51, 52) !important; padding: 8% !important; text-align: center;"
       >
         Display results here!!!
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">
+        <button
+          id="close-your-results"
+          type="button"
+          class="btn btn-default"
+          data-dismiss="modal"
+        >
           Close
         </button>
       </div>
@@ -218,7 +219,12 @@
         Display results here!!!
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">
+        <button
+          id="close-avg-results"
+          type="button"
+          class="btn btn-default"
+          data-dismiss="modal"
+        >
           Close
         </button>
       </div>
