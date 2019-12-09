@@ -7,76 +7,122 @@
 />
 
 <style type="text/css">
-/*  div.gallery {
-    float: left;
-    width: 18%;
-    position: relative; 
+  div.gallery {
+    width: 90%;
   }
+
   div.gallery img:hover {
     border: 2px solid #E8A87C;
+    cursor: pointer;
   }
+
   div.gallery img {
     width: 100%;
     height: auto;
-    border: 3px solid #FFFFFF;
-    position: relative;
   }
+
   div.desc {
     padding: 15px;
-    text-align: center;
+    text-align: center;       
     background-color: #ffe1c5;
     position: relative;
-  }*/
+  }
 
-/*NEW VERSION*/
-div.gallery {
-  width: 90%;
+  * {
+    box-sizing: border-box;
+  }
+
+  .responsive {
+    padding: 0 6px;
+    float: left;
+    width: 25%;
+  }
+
+  @media only screen and (max-width: 700px) {
+    .responsive {
+      width: 50%;
+      margin: 6px 0;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .responsive {
+      width: 110%;
+    }
+  }
+
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+/* Modal stuff */
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-div.gallery img:hover {
-  border: 2px solid #E8A87C;
-}
-
-div.gallery img {
-  width: 100%;
-  height: auto;
-}
-
-div.desc {
-  padding: 15px;
-  text-align: center;
-  background-color: #ffe1c5;
+/* Modal Content */
+.modal-content {
   position: relative;
+  background-color: #FFFFFF;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
 }
 
-* {
-  box-sizing: border-box;
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
 }
 
-.responsive {
-  padding: 0 6px;
-  float: left;
-  width: 25%;
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
 }
 
-@media only screen and (max-width: 700px) {
-  .responsive {
-    width: 50%;
-    margin: 6px 0;
-  }
+/* The Close Button */
+.close {
+  color: #000000;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
-@media only screen and (max-width: 500px) {
-  .responsive {
-    width: 110%;
-  }
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.clearfix:after {
-  content: "";
-  display: table;
-  clear: both;
+.modal-header {
+  padding: 15px 16px;
+  padding-top: 25px;
+  background-color: rgba(232, 168, 124);
+  color: #FFFFFF;
 }
+
+.modal-body {padding: 20px 16px;}
 
 
 </style>
@@ -95,99 +141,145 @@ div.desc {
 </div>
 
 
-
 <div class="responsive">
   <div class="gallery">
-      <img src="Meme1.jpg" width="600" height="400">
+      <img src="Meme1.jpg" width="600" height="400" onclick="open_modal()">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme2.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <img src="Meme2.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme3.gif" width="600" height="400" style="position: relative; top: 30px">
+      <img src="Meme3.gif" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme4.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <img src="Meme4.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme5.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <img src="Meme5.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme21.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <img src="Meme21.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
   </div>
 </div>
 
 <div class="responsive">
   <div class="gallery">
-      <img src="Meme6.jpg" width="600" height="400">
+      <img src="Meme6.jpg" width="600" height="400" onclick="open_modal()">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme7.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <img src="Meme7.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme8.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <img src="Meme8.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme9.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <img src="Meme9.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme10.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <img src="Meme10.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme22.gif" width="600" height="400" style="position: relative; top: 30px">
-      <div class="desc">Add a description of the image here</div>
-  </div>
-</div>
-
-<div class="responsive">
-  <div class="gallery">
-      <img src="Meme11.jpg" width="600" height="400">
-      <div class="desc">Add a description of the image here</div>
-
-      <img src="Meme12.jpg" width="600" height="400" style="position: relative; top: 30px">
-      <div class="desc">Add a description of the image here</div>
-
-      <img src="Meme13.gif" width="600" height="400" style="position: relative; top: 30px">
-      <div class="desc">Add a description of the image here</div>
-
-      <img src="Meme14.jpg" width="600" height="400" style="position: relative; top: 30px">
-      <div class="desc">Add a description of the image here</div>
-
-      <img src="Meme15.jpg" width="600" height="400" style="position: relative; top: 30px">
-      <div class="desc">Add a description of the image here</div>
-
-      <img src="Meme23.gif" width="600" height="400" style="position: relative; top: 30px">
+      <img src="Meme22.gif" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
   </div>
 </div>
 
 <div class="responsive">
   <div class="gallery">
-      <img src="Meme16.jpg" width="600" height="400">
+      <img src="Meme11.jpg" width="600" height="400" onclick="open_modal()">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme17.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <img src="Meme12.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme18.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <img src="Meme13.gif" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme19.gif" width="600" height="400" style="position: relative; top: 30px">
+      <img src="Meme14.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme20.gif" width="600" height="400" style="position: relative; top: 30px">
+      <img src="Meme15.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme24.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <img src="Meme23.gif" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+      <img src="Meme16.jpg" width="600" height="400" onclick="open_modal()">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme25.jpg" width="600" height="400" style="position: relative; top: 30px">
+      <img src="Meme17.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
+
+      <img src="Meme18.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
+
+      <img src="Meme19.gif" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
+
+      <img src="Meme20.gif" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
+
+      <img src="Meme24.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
+      <div class="desc">Add a description of the image here</div>
+
+      <img src="Meme25.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
   </div>
 </div>
 
 
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 style="word-spacing: 8px; text-shadow: none !important;">Content Analysis</h2>
+      <span class="close">&times;</span>
+    </div>
+    <div class="modal-body">
+      <p style="color: #575757">Some text in the Modal Body</p>
+      <p style="color: #575757">Some other text...</p>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<script type="text/javascript">
+  // Get the modal
+  var modal = document.getElementById("myModal");
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  function open_modal() {
+    modal.style.display = "block";
+  }
+</script>
 
 
 
