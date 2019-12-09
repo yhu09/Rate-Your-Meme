@@ -79,3 +79,31 @@ app.get("*", function(req, res) {
 app.listen(5000, function() {
   console.log("server is running...");
 });
+
+// parsing json
+app.use(bodyParser.json());
+
+app.post("/rate", async (request, response) => {
+  try {
+    var ratings = new memeRating(request.body);
+    var result = await ratings.save();
+    console.log("sending rating:");
+    console.log(result);
+    response.send(result);
+  } catch (error) {
+    console.log("error rating");
+    response.status(500).send(error);
+  }
+});
+
+app.get("/", async (req, res) => {
+  console.log("getting");
+  memeRating.find({"meme": 0}, function(err, ratings) {
+    if (err) {
+      console.log("SOMETHING WENT WRONG IN FIND");
+    } else {
+      console.log("rating RETRIEVED");
+      console.log(ratings);
+    }
+  });
+});
