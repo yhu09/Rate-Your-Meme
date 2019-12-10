@@ -81,7 +81,7 @@
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 50%;
+  width: 40%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
@@ -143,22 +143,22 @@
 
 <div class="responsive">
   <div class="gallery">
-      <img src="Meme1.jpg" width="600" height="400" onclick="open_modal()">
+      <img src="Meme1.jpg" width="600" height="400" onclick="open_modal('Meme1.jpg')">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme2.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
+      <img src="Meme2.jpg" width="600" height="400" onclick="open_modal('Meme2.jpg')" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme3.gif" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
+      <img src="Meme3.gif" width="600" height="400" onclick="open_modal('Meme3.gif')" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme4.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
+      <img src="Meme4.jpg" width="600" height="400" onclick="open_modal('Meme4.jpg')" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme5.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
+      <img src="Meme5.jpg" width="600" height="400" onclick="open_modal('Meme5.jpg')" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
 
-      <img src="Meme21.jpg" width="600" height="400" onclick="open_modal()" style="position: relative; top: 30px">
+      <img src="Meme21.jpg" width="600" height="400" onclick="open_modal('Meme21.jpg')" style="position: relative; top: 30px">
       <div class="desc">Add a description of the image here</div>
   </div>
 </div>
@@ -246,6 +246,7 @@
     <div class="modal-body">
       <p style="color: #575757">Some text in the Modal Body</p>
       <p style="color: #575757">Some other text...</p>
+      <div id="img-container"></div>
     </div>
   </div>
 
@@ -276,9 +277,12 @@
     }
   }
 
-  function open_modal() {
+  function open_modal(img) {
     modal.style.display = "block";
+    document.getElementById("img-container").innerHTML = "<img src=" + img + " width='100%'>"
   }
+
+
 </script>
 
 
