@@ -72,11 +72,6 @@ app.get("/", function(req, res) {
 app.get("/library", (req, res) => res.render("library"));
 app.get("/about", (req, res) => res.render("about"));
 
-//Routing to PageNotFound
-app.get("*", function(req, res) {
-  res.render("PageNotFound");
-});
-
 app.listen(5000, function() {
   console.log("server is running...");
 });
@@ -97,14 +92,19 @@ app.post("/rate", async (request, response) => {
   }
 });
 
-app.get("/", async (req, res) => {
+app.get("/meme", (req, res) => {
   console.log("getting");
-  memeRating.find({ meme: 0 }, function(err, ratings) {
+  memeRating.find(req.query, function(err, ratings) {
     if (err) {
       console.log("SOMETHING WENT WRONG IN FIND");
     } else {
       console.log("rating RETRIEVED");
-      console.log(ratings);
+      res.send(ratings);
     }
   });
+});
+
+//Routing to PageNotFound
+app.get("*", function(req, res) {
+  res.render("PageNotFound");
 });
