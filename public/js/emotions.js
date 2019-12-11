@@ -155,14 +155,12 @@ function rateMeme(emotions) {
     // console.log("Average Sadness: " + avgSadness);
     // console.log("Average Disgust: " + avgDisgust);
     ticks = 0;
-    console.log("here");
     if (rated) {
-      console.log("YESITSRATED");
-     const oldId = document.getElementsByClassName("meme")[0].id;
-     var newId = parseInt(oldId) + 1;
-    //  getRating(newId);
-     rate(newId);
-     showResult();
+      const oldId = document.getElementsByClassName("meme")[0].id;
+      var newId = parseInt(oldId) + 1;
+      rate(newId);
+      showResult();
+      ratings = getRating(newId); // gets all the ratings of the current meme in json format
     }
   }
 }
@@ -207,19 +205,20 @@ function rate(newId) {
  }));
 };
 
-// function getRating(newId) {
-//   console.log("getting");
-//  request = new XMLHttpRequest();
-// //  request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
-//  request.open("GET", "/", true);
-//  request.send(newId);
+function getRating(newId) {
+  console.log("getting");
+  request = new XMLHttpRequest();
+//  request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+  var memeQuery = "/meme?meme=" + newId;
+  request.open("GET", memeQuery, true);
+  request.send(memeQuery);
 
 //  request.onreadystatechange=function() {
 //    if (this.readyState == 4 && this.status == 200) {
 //      console.log(request.responseText);
 //    }
 //  };
-// };
+};
 
 // function getRating(newId) {
   // $.ajax({
@@ -231,8 +230,8 @@ function rate(newId) {
   //   }
   // });
 
-  $('#stopButton').click(function() {
-    $.get('/getRating', function(data, status) {
-      console.log("here");
-    });
-  });
+  // $('#stopButton').click(function() {
+  //   $.get('/getRating', function(data, status) {
+  //     console.log("here");
+  //   });
+  // });
