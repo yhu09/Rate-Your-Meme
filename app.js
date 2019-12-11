@@ -64,7 +64,7 @@ app.use(express.static("public"));
 app.use(express.static(__dirname + "/public"));
 
 //Routing to home
-app.get("/", function(req, res) {
+app.get("/home", function(req, res) {
   res.render("home");
 });
 
