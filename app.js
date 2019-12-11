@@ -77,7 +77,7 @@ app.get("*", function(req, res) {
   res.render("PageNotFound");
 });
 
-app.listen(5000, function() {
+app.listen(process.env.PORT || 5000, function() {
   console.log("server is running...");
 });
 
@@ -89,7 +89,7 @@ app.post("/rate", async (request, response) => {
     var ratings = new memeRating(request.body);
     var result = await ratings.save();
     console.log("sending rating:");
-    console.log(result);
+    // console.log(result);
     response.send(result);
   } catch (error) {
     console.log("error rating");
