@@ -97,14 +97,14 @@ app.post("/rate", async (request, response) => {
   }
 });
 
-app.get("/", async (req, res) => {
-  console.log("getting");
-  memeRating.find({ meme: 0 }, function(err, ratings) {
-    if (err) {
-      console.log("SOMETHING WENT WRONG IN FIND");
-    } else {
-      console.log("rating RETRIEVED");
-      console.log(ratings);
-    }
-  });
-});
+// app.get("/", async (req, res) => {
+//   console.log("getting");
+//   memeRating.find({ meme: 0 }, function(err, ratings) {
+//     if (err) {
+//       console.log("SOMETHING WENT WRONG IN FIND");
+//     } else {
+//       console.log("rating RETRIEVED");
+//       console.log(ratings);
+//     }
+//   });
+// });
