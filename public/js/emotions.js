@@ -20,6 +20,7 @@ var avgAnger = 0;
 var avgFear = 0;
 var avgsurprise = 0;
 var started = false;
+var theRatings;
 onload = function() {
   var container = document.createElement("div");
   container.id = "affdex_elements";
@@ -160,7 +161,19 @@ function rateMeme(emotions) {
       var newId = parseInt(oldId) + 1;
       rate(newId);
       showResult();
-      ratings = getRating(newId); // gets all the ratings of the current meme in json format
+      console.log("getting");
+      request = new XMLHttpRequest();
+      var memeQuery = "/meme?meme=" + newId;
+    
+      request.open("GET", memeQuery, true);
+      request.setRequestHeader("Content-Type", "application/json");
+      request.send(memeQuery);
+      request.onreadystatechange=function() {
+        if (this.readyState == 4 && this.status == 200) {
+          theRatings = request.responseText;
+          console.log(theRatings);
+        }
+      }
     }
   }
 }
@@ -205,33 +218,3 @@ function rate(newId) {
  }));
 };
 
-function getRating(newId) {
-  console.log("getting");
-  request = new XMLHttpRequest();
-//  request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
-  var memeQuery = "/meme?meme=" + newId;
-  request.open("GET", memeQuery, true);
-  request.send(memeQuery);
-
-//  request.onreadystatechange=function() {
-//    if (this.readyState == 4 && this.status == 200) {
-//      console.log(request.responseText);
-//    }
-//  };
-};
-
-// function getRating(newId) {
-  // $.ajax({
-  //   url: '/getRating',
-  //   contentType: "application/json",
-  //   success: function(response) {
-  //     console.log("success");
-  //     console.log(response);
-  //   }
-  // });
-
-  // $('#stopButton').click(function() {
-  //   $.get('/getRating', function(data, status) {
-  //     console.log("here");
-  //   });
-  // });

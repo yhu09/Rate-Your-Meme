@@ -98,7 +98,6 @@ app.get("/meme", (req, res) => {
     if (err) {
       console.log("SOMETHING WENT WRONG IN FIND");
     } else {
-      console.log("rating RETRIEVED");
       res.send(ratings);
     }
   });
