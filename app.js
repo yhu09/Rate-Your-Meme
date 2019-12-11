@@ -16,10 +16,10 @@ mongoose
 
 //Rating Schema
 var memeRatingSchema = new mongoose.Schema({
+  meme: String,
   joy: Number,
   sadness: Number,
   disgust: Number,
-  contempt: Number,
   anger: Number,
   fear: Number,
   suprise: Number
@@ -94,7 +94,7 @@ app.post("/rate", async (request, response) => {
 
 app.get("/meme", (req, res) => {
   console.log("getting");
-  memeRating.find(req.query, function(err, ratings) {
+  memeRating.findOneAndUpdate(req.query, update, function(err, ratings) {
     if (err) {
       console.log("SOMETHING WENT WRONG IN FIND");
     } else {
