@@ -72,7 +72,7 @@ app.get("/", function(req, res) {
 app.get("/library", (req, res) => res.render("library"));
 app.get("/about", (req, res) => res.render("about"));
 
-app.listen(5000, function() {
+app.listen(process.env.PORT, function() {
   console.log("server is running...");
 });
 
