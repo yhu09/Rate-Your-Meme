@@ -42,7 +42,6 @@ onload = function() {
   // document.body.appendChild(startButton);
 
   var stopButton = document.createElement("BUTTON");
-  stopButton.setAttribute("id", "stopButton");
   stopButton.innerHTML = "Stop";
   stopButton.onclick = function() {
     detector.stop();
@@ -79,7 +78,7 @@ onload = function() {
 
       var memeButton = document.getElementById("new-meme-button-div");
       memeButton.innerHTML =
-        "<button id='new-meme-button' type='button' class='btn btn-info btn-outline' onclick='reset()'>Gimme a new meme!</button>";
+        "<button id='new-meme-button' type='button' class='btn btn-default btn-outline btn-lg' onclick='reset()'>Gimme a new meme!</button>";
     }
 
     for (var key in faces) {
@@ -155,22 +154,14 @@ function rateMeme(emotions) {
     // console.log("Average Sadness: " + avgSadness);
     // console.log("Average Disgust: " + avgDisgust);
     ticks = 0;
-    console.log("here");
-    if (rated) {
-      console.log("YESITSRATED");
-     const oldId = document.getElementsByClassName("meme")[0].id;
-     var newId = parseInt(oldId) + 1;
-    //  getRating(newId);
-     rate(newId);
-     showResult();
-    }
+    if (rated) showResult();
   }
 }
 
 function showResult() {
   var yourButton = document.getElementById("your-results-btn-span");
   yourButton.innerHTML =
-    "<button type='button' class='btn btn-outline btn-default' data-toggle='modal' data-target='#userResultsModal' style='color: rgb(211, 152, 113); text-shadow: none;'>Your Results</button>";
+    "<button type='button' class='btn btn-outline btn-info' data-toggle='modal' data-target='#userResultsModal' style='color: rgb(211, 152, 113); text-shadow: none;'>Your Results</button>";
   var result = document.getElementById("results");
   results.innerHTML =
     "Joy: " +
@@ -191,48 +182,3 @@ function showResult() {
 function reset() {
   rated = false;
 }
-
-function rate(newId) {
- request = new XMLHttpRequest();
- request.open("POST", "/rate", true);
- request.setRequestHeader('Content-Type', 'application/json');
- request.send(JSON.stringify({
-   meme: newId,
-   joy: avgJoy,
-   sadness: avgSadness,
-   disgust: avgDisgust,
-   anger: avgAnger,
-   fear: avgFear,
-   suprise : avgSurprise,
- }));
-};
-
-// function getRating(newId) {
-//   console.log("getting");
-//  request = new XMLHttpRequest();
-// //  request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
-//  request.open("GET", "/", true);
-//  request.send(newId);
-
-//  request.onreadystatechange=function() {
-//    if (this.readyState == 4 && this.status == 200) {
-//      console.log(request.responseText);
-//    }
-//  };
-// };
-
-// function getRating(newId) {
-  // $.ajax({
-  //   url: '/getRating',
-  //   contentType: "application/json",
-  //   success: function(response) {
-  //     console.log("success");
-  //     console.log(response);
-  //   }
-  // });
-
-  $('#stopButton').click(function() {
-    $.get('/getRating', function(data, status) {
-      console.log("here");
-    });
-  });
