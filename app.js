@@ -46,14 +46,14 @@ var memeRating = mongoose.model("memeRating", memeRatingSchema);
 // });
 
 //find all existing ratings from the database
-memeRating.find({}, function(err, ratings) {
-  if (err) {
-    console.log("SOMETHING WENT WRONG IN FIND");
-  } else {
-    console.log("ALL RATINGS RETRIVED");
-    console.log(ratings);
-  }
-});
+// memeRating.find({}, function(err, ratings) {
+//   if (err) {
+//     console.log("SOMETHING WENT WRONG IN FIND");
+//   } else {
+//     console.log("ALL RATINGS RETRIVED");
+//     console.log(ratings);
+//   }
+// });
 
 //EJS
 app.use(expressLayout);
