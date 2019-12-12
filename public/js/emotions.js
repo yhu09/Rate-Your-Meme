@@ -18,7 +18,7 @@ var avgSadness = 0;
 var avgDisgust = 0;
 var avgAnger = 0;
 var avgFear = 0;
-var avgsurprise = 0;
+var avgSurprise = 0;
 var started = false;
 var theRatings;
 onload = function() {
