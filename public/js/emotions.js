@@ -174,7 +174,7 @@ function rateMeme(emotions) {
       request.send(memeQuery);
       request.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          var theRatings = request.responseText;
+          var theRatings = request.responseText[0];
           var theRatingsData = JSON.parse(theRatings);
           var firstElem = theRatingsData[0]; //not sure which one I was supposed to use, the array had a length of 2
           var joyRating = firstElem.joy;
