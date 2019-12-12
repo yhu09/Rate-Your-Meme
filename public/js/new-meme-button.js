@@ -1,4 +1,4 @@
-const button = document.getElementById("new-meme-button-div");
+const button = document.getElementById("new-meme-button");
 button.addEventListener("click", function(e) {
   const oldId = document.getElementsByClassName("meme")[0].id;
   var newId = parseInt(oldId) + 1;
@@ -7,10 +7,10 @@ button.addEventListener("click", function(e) {
   if (newId > 25) {
     var imgContainer = document.getElementById("meme-container");
     var resultsButtons = document.getElementById("results-buttons");
-    var memeButton = document.getElementById("new-meme-button-div");
+    var memeButtonDiv = document.getElementById("new-meme-button-div");
     imgContainer.innerHTML = "<div>No more memes!</div>";
     resultsButtons.innerHTML = "";
-    memeButton.innerHTML = "";
+    memeButtonDiv.innerHTML = "";
 
     return;
   }

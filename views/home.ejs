@@ -153,11 +153,22 @@
           </span>
         </div>
         <div id="new-meme-button-div">
-          <img
-            class="loading-symbol"
-            src="loading-crop.gif"
-            alt="Image not found"
-          />
+          <span id="new-meme-button" style="display:none;">
+            <button
+              id="new-meme-button"
+              type="button"
+              class="btn btn-default btn-outline btn-lg"
+              onclick="reset()"
+            >
+              Gimme a new meme!
+            </button>
+          </span>
+          <span id="loading-symbol"
+            ><img
+              class="loading-symbol"
+              src="loading-crop.gif"
+              alt="Image not found"
+          /></span>
         </div>
       </div>
       <!-- <div class="modal-footer">

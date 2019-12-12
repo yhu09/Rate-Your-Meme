@@ -65,21 +65,6 @@ h1 {
   padding-bottom: 1%;
 }
 
-.step {
-  /* margin-left: 30%; */
-  margin-bottom: 15%;
-  /* margin-right: 30%; */
-  padding: 5%;
-  /* padding-left: 2%;
-  padding-right: 2%;
-  padding-top: 2%;
-  padding-bottom: 2%; */
-  border-radius: 0%;
-  /* border-style: solid;
-  border-color: #ffffff; */
-  color: #ffffff;
-}
-
 .tutorial-button,
 .start-button,
 #new-meme-button-div {

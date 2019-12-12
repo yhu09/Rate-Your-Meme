@@ -76,9 +76,12 @@ onload = function() {
       img.id = "1";
       started = true;
 
-      var memeButton = document.getElementById("new-meme-button-div");
-      memeButton.innerHTML =
-        "<button id='new-meme-button' type='button' class='btn btn-default btn-outline btn-lg' onclick='reset()'>Gimme a new meme!</button>";
+      var memeButton = document.getElementById("new-meme-button");
+      memeButton.style.display = "";
+      var loadingSymbol = document.getElementById("loading-symbol");
+      loadingSymbol.style.display = "none";
+      // memeButton.innerHTML =
+      //   "<button id='new-meme-button' type='button' class='btn btn-default btn-outline btn-lg' onclick='reset()'>Gimme a new meme!</button>";
     }
 
     for (var key in faces) {
@@ -160,6 +163,7 @@ function rateMeme(emotions) {
       rate(newId);
       showResult();
       ratings = getRating(newId); // gets all the ratings of the current meme in json format
+      console.log(JSON.parse(ratings));
     }
   }
 }
