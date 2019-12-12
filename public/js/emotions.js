@@ -172,6 +172,7 @@ function rateMeme(emotions) {
         if (this.readyState == 4 && this.status == 200) {
           theRatings = request.responseText;
           console.log(theRatings);
+          // showHistory();
         }
       }
     }
@@ -180,10 +181,29 @@ function rateMeme(emotions) {
 
 function showResult() {
   var yourButton = document.getElementById("your-results-btn-span");
-  yourButton.innerHTML =
-    "<button type='button' class='btn btn-outline btn-default' data-toggle='modal' data-target='#userResultsModal' style='color: rgb(211, 152, 113); text-shadow: none;'>Your Results</button>";
+  yourButton.innerHTML = "<button type='button' class='btn btn-outline btn-default' data-toggle='modal' data-target='#userResultsModal' style='color: rgb(211, 152, 113); text-shadow: none;'>Your Results</button>";
   var result = document.getElementById("results");
   results.innerHTML =
+    "Joy: " +
+    avgJoy +
+    "<br /> Sadness: " +
+    avgSadness +
+    "<br />" +
+    "Disgust: " +
+    avgDisgust +
+    "<br /> Anger: " +
+    avgAnger +
+    "<br /> Fear: " +
+    avgFear +
+    "<br /> Suprise: " +
+    avgSurprise;
+}
+
+function showHistory() {
+  var avgButton = document.getElementById("avg-results-btn-span");
+  yourButton.innerHTML = "<button type='button' class='btn btn-outline btn-default' data-toggle='modal' data-target='#avgResultsModal' style='color: rgb(211, 152, 113); text-shadow: none;'>Average Results</button>";
+  var result = document.getElementById("avgResults");
+  avgResults.innerHTML =
     "Joy: " +
     avgJoy +
     "<br /> Sadness: " +

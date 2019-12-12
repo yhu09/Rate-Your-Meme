@@ -29,13 +29,14 @@ var memeRating = mongoose.model("memeRating", memeRatingSchema);
 
 //Creating an instance from the schema and add to database
 // memeRating.create({
+//   meme: 25,
 //   joy: 0,
 //   sadness: 0,
 //   disgust: 0,
-//   contempt: 0,
 //   anger: 0,
 //   fear: 0,
-//   suprise : 0
+//   suprise : 0,
+//   views: 0
 // }, function(err, memeRating) {
 //   if(err) {
 //     console.log("SOMETHING WENT WRONG IN CREATE");
@@ -72,7 +73,7 @@ app.get("/", function(req, res) {
 app.get("/library", (req, res) => res.render("library"));
 app.get("/about", (req, res) => res.render("about"));
 
-app.listen(process.env.PORT, function() {
+app.listen(process.env.PORT || 5000, function() {
   console.log("server is running...");
 });
 
@@ -81,11 +82,15 @@ app.use(bodyParser.json());
 
 app.post("/rate", async (request, response) => {
   try {
-    var ratings = new memeRating(request.body);
+    var ratings = request.body;
+    console.log(ratings);
+    console.log(ratings.meme);
+    var memenumber = ratings.meme;
+    memeRating.findOneAndUpdate(ratings.meme, ratings);
     var result = await ratings.save();
     console.log("sending rating:");
     console.log(result);
-    response.send(result);
+    // response.send(result);
   } catch (error) {
     console.log("error rating");
     response.status(500).send(error);
@@ -94,7 +99,7 @@ app.post("/rate", async (request, response) => {
 
 app.get("/meme", (req, res) => {
   console.log("getting");
-  memeRating.findOneAndUpdate(req.query, update, function(err, ratings) {
+  memeRating.find(req.query, function(err, ratings) {
     if (err) {
       console.log("SOMETHING WENT WRONG IN FIND");
     } else {
