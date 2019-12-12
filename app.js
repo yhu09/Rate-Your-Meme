@@ -3,6 +3,7 @@ const app = express();
 const expressLayout = require("express-ejs-layouts");
 const mongoose = require("mongoose");
 var bodyParser = require("body-parser");
+mongoose.set('useFindAndModify', false);
 
 //DB config
 const db = require("./config/keys").MongoURI;
@@ -80,22 +81,24 @@ app.listen(process.env.PORT || 5000, function() {
 // parsing json
 app.use(bodyParser.json());
 
-app.post("/rate", async (request, response) => {
-  try {
-    var ratings = request.body;
-    console.log(ratings);
-    console.log(ratings.meme);
-    var memenumber = ratings.meme;
-    memeRating.findOneAndUpdate(ratings.meme, ratings);
-    var result = await ratings.save();
-    console.log("sending rating:");
-    console.log(result);
-    // response.send(result);
-  } catch (error) {
-    console.log("error rating");
-    response.status(500).send(error);
-  }
-});
+// app.put("/rate", async (request, response) => {
+//   // try {
+//     var ratings = request.body;
+//     console.log("new data:")
+//     console.log(ratings);
+//     console.log(ratings.meme);
+//     var memenumber = ratings.meme;
+//     memeRating.findOneAndUpdate(ratings.meme, ratings);
+//     // var result = await ratings.save();
+//     console.log("sending rating:");
+//     // console.log(result);
+//     console.log("sent");
+//     response.send(ratings);
+//   // } catch (error) {
+//     // console.log("error rating");
+//     // response.status(500).send(error);
+//   // }
+// });
 
 app.get("/meme", (req, res) => {
   console.log("getting");
@@ -104,8 +107,15 @@ app.get("/meme", (req, res) => {
       console.log("SOMETHING WENT WRONG IN FIND");
     } else {
       res.send(ratings);
+      console.log(ratings);
     }
   });
+});
+
+app.put("/rate", async (req, res) => {
+  filter = { meme : req.body.meme };
+  var ratings = await memeRating.findOneAndUpdate(filter, req.body);
+  res.send(ratings);
 });
 
 //Routing to PageNotFound

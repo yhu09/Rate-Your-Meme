@@ -20,7 +20,7 @@ var avgAnger = 0;
 var avgFear = 0;
 var avgsurprise = 0;
 var started = false;
-var theRatings;
+// var theRatings;
 onload = function() {
   var container = document.createElement("div");
   container.id = "affdex_elements";
@@ -109,6 +109,10 @@ function clockTick() {
   document.getElementById("Clock").innerHTML = "Time: " + clock.toFixed(2);
 }
 
+function mathify(average, value, views) {
+  return average = average + ((value - average) / views);
+};
+
 function rateMeme(emotions) {
   var engagement = emotions.engagement;
   if (engagement > 50 && !engaged) {
@@ -161,18 +165,16 @@ function rateMeme(emotions) {
     if (rated) {
       const oldId = document.getElementsByClassName("meme")[0].id;
       var newId = parseInt(oldId) + 1;
-      rate(newId);
-      showResult();
       console.log("getting");
       request = new XMLHttpRequest();
-      var memeQuery = "/meme?meme=" + newId;
+      var memeQuery = "/meme?meme=" + oldId;
 
       request.open("GET", memeQuery, true);
       request.setRequestHeader("Content-Type", "application/json");
       request.send(memeQuery);
       request.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          theRatings = request.responseText;
+          var theRatings = request.responseText;
           var theRatingsData = JSON.parse(theRatings);
           var firstElem = theRatingsData[0]; //not sure which one I was supposed to use, the array had a length of 2
           var joyRating = firstElem.joy;
@@ -181,7 +183,7 @@ function rateMeme(emotions) {
           var angerRating = firstElem.anger;
           var fearRating = firstElem.fear;
           var surpriseRating = firstElem.surprise;
-          // showHistory();
+          var views = firstElem.views;
           var ratingsDisplay = document.getElementById("avgResults");
           ratingsDisplay.innerHTML =
             "Joy: " +
@@ -198,6 +200,8 @@ function rateMeme(emotions) {
             "<br /> Surprise: " +
             surpriseRating;
         }
+        rate(oldId, joyRating, sadRating, disgustRating, angerRating, fearRating, surpriseRating, views);
+        showResult();
       };
     }
   }
@@ -224,44 +228,50 @@ function showResult() {
     avgSurprise;
 }
 
-function showHistory() {
-  var avgButton = document.getElementById("avg-results-btn-span");
-  yourButton.innerHTML =
-    "<button type='button' class='btn btn-outline btn-default' data-toggle='modal' data-target='#avgResultsModal' style='color: rgb(211, 152, 113); text-shadow: none;'>Average Results</button>";
-  var result = document.getElementById("avgResults");
-  avgResults.innerHTML =
-    "Joy: " +
-    avgJoy +
-    "<br /> Sadness: " +
-    avgSadness +
-    "<br />" +
-    "Disgust: " +
-    avgDisgust +
-    "<br /> Anger: " +
-    avgAnger +
-    "<br /> Fear: " +
-    avgFear +
-    "<br /> surprise: " +
-    avgSurprise;
-}
-
 function reset() {
   rated = false;
 }
 
-function rate(newId) {
+
+function rate(id, joyRating, sadRating, disgustRating, angerRating, fearRating, surpriseRating, views) {
+  // var theRatingsData = JSON.parse(theRatings);
+  // console.log(theRatingsData);
+  // var firstElem = theRatingsData[0];
+  // // var memeId = firstElem.meme;
+  // var joyRating = firstElem.joy;
+  // var sadRating = firstElem.sadness;
+  // var disgustRating = firstElem.disgust;
+  // var angerRating = firstElem.anger;
+  // var fearRating = firstElem.fear;
+  // var surpriseRating = firstElem.surprise;
+  // var viewCount = firstElem.views + 1;
+  viewCount = views + 1;
+
   request = new XMLHttpRequest();
-  request.open("POST", "/rate", true);
+  request.open("PUT", "/rate", true);
   request.setRequestHeader("Content-Type", "application/json");
+  // request.send(
+  //   JSON.stringify({
+  //     meme: id,
+  //     joy: avgJoy,
+  //     sadness: avgSadness,
+  //     disgust: avgDisgust,
+  //     anger: avgAnger,
+  //     fear: avgFear,
+  //     surprise: avgSurprise
+  //   })
   request.send(
     JSON.stringify({
-      meme: newId,
-      joy: avgJoy,
-      sadness: avgSadness,
-      disgust: avgDisgust,
-      anger: avgAnger,
-      fear: avgFear,
-      surprise: avgSurprise
+      meme: id,
+      joy: mathify(joyRating, avgJoy, viewCount),
+      sadness: mathify(sadRating, avgSadness, viewCount),
+      disgust: mathify(disgustRating, avgDisgust, viewCount),
+      anger: mathify(angerRating, avgAnger, viewCount),
+      fear: mathify(fearRating, avgFear, viewCount),
+      surprise: mathify(surpriseRating, avgSurprise, viewCount),
+      views: viewCount
     })
   );
-}
+  console.log("response:");
+  console.log(request.responseText);
+};
