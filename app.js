@@ -22,7 +22,7 @@ var memeRatingSchema = new mongoose.Schema({
   disgust: Number,
   anger: Number,
   fear: Number,
-  suprise: Number
+  surprise: Number
 });
 
 var memeRating = mongoose.model("memeRating", memeRatingSchema);
@@ -35,7 +35,7 @@ var memeRating = mongoose.model("memeRating", memeRatingSchema);
 //   disgust: 0,
 //   anger: 0,
 //   fear: 0,
-//   suprise : 0,
+//   surprise : 0,
 //   views: 0
 // }, function(err, memeRating) {
 //   if(err) {

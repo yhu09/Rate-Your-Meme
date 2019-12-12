@@ -143,7 +143,7 @@ function rateMeme(emotions) {
     // console.log("Total Disgust:" + totalDisgust);
     // console.log("Total Anger:" + totalAnger);
     // console.log("Total Fear:" + totalFear);
-    // console.log("Total Suprise:" + totalSurprise);
+    // console.log("Total surprise:" + totalSurprise);
   } else {
     if (ticks == 0) return;
     interval = endtime - starttime;
@@ -195,7 +195,7 @@ function rateMeme(emotions) {
             angerRating +
             "<br /> Fear: " +
             fearRating +
-            "<br /> Suprise: " +
+            "<br /> Surprise: " +
             surpriseRating;
         }
       };
@@ -220,7 +220,7 @@ function showResult() {
     avgAnger +
     "<br /> Fear: " +
     avgFear +
-    "<br /> Suprise: " +
+    "<br /> Surprise: " +
     avgSurprise;
 }
 
@@ -241,7 +241,7 @@ function showHistory() {
     avgAnger +
     "<br /> Fear: " +
     avgFear +
-    "<br /> Suprise: " +
+    "<br /> surprise: " +
     avgSurprise;
 }
 
@@ -261,7 +261,7 @@ function rate(newId) {
       disgust: avgDisgust,
       anger: avgAnger,
       fear: avgFear,
-      suprise: avgSurprise
+      surprise: avgSurprise
     })
   );
 }
