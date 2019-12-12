@@ -20,7 +20,7 @@ var avgAnger = 0;
 var avgFear = 0;
 var avgsurprise = 0;
 var started = false;
-// var theRatings;
+var theRatings;
 onload = function() {
   var container = document.createElement("div");
   container.id = "affdex_elements";
@@ -33,23 +33,6 @@ onload = function() {
   var faceMode = affdex.FaceDetectorMode.LARGE_FACES;
 
   detector = new affdex.CameraDetector(divRoot, 0, 0, faceMode);
-
-  // var startButton = document.createElement("BUTTON");
-  // startButton.innerHTML = "Start";
-  // startButton.onclick = function() {
-  //   detector.start();
-  // };
-  //
-  // document.body.appendChild(startButton);
-
-  var stopButton = document.createElement("BUTTON");
-  stopButton.innerHTML = "Stop";
-  stopButton.onclick = function() {
-    detector.stop();
-    clearInterval(timer);
-  };
-
-  document.body.appendChild(stopButton);
 
   detector.detectAllExpressions();
   detector.detectAllEmotions();
@@ -88,10 +71,8 @@ onload = function() {
     for (var key in faces) {
       var value = faces[key];
       var emotions = value["emotions"];
-      // console.log(rated);
       if (!rated) {
         rateMeme(emotions);
-        // console.log(emotions);
       }
     }
   });
@@ -106,12 +87,11 @@ onload = function() {
 
 function clockTick() {
   clock = clock + 0.01;
-  document.getElementById("Clock").innerHTML = "Time: " + clock.toFixed(2);
 }
 
 function mathify(average, value, views) {
-  return average = average + ((value - average) / views);
-};
+  return (average = average + (value - average) / views);
+}
 
 function rateMeme(emotions) {
   var engagement = emotions.engagement;
@@ -134,20 +114,12 @@ function rateMeme(emotions) {
   }
   if (engaged) {
     ticks++;
-    // console.log("Joy: " + emotions.joy);
-    // console.log("Ticks: " + ticks);
     totalJoy += emotions.joy;
     totalSadness += emotions.sadness;
     totalDisgust += emotions.disgust;
     totalAnger += emotions.anger;
     totalFear += emotions.fear;
     totalSurprise += emotions.surprise;
-    // console.log("Total Joy:" + totalJoy);
-    // console.log("Total Sadness:" + totalSadness);
-    // console.log("Total Disgust:" + totalDisgust);
-    // console.log("Total Anger:" + totalAnger);
-    // console.log("Total Fear:" + totalFear);
-    // console.log("Total surprise:" + totalSurprise);
   } else {
     if (ticks == 0) return;
     interval = endtime - starttime;
@@ -157,26 +129,20 @@ function rateMeme(emotions) {
     avgAnger = (totalAnger / ticks).toFixed(2);
     avgFear = (totalFear / ticks).toFixed(2);
     avgSurprise = (totalSurprise / ticks).toFixed(2);
-    // console.log("Interval: " + interval);
-    // console.log("Average Joy: " + avgJoy);
-    // console.log("Average Sadness: " + avgSadness);
-    // console.log("Average Disgust: " + avgDisgust);
     ticks = 0;
     if (rated) {
       const oldId = document.getElementsByClassName("meme")[0].id;
-      var newId = parseInt(oldId) + 1;
-      console.log("getting");
-      request = new XMLHttpRequest();
+      var request = new XMLHttpRequest();
       var memeQuery = "/meme?meme=" + oldId;
-
       request.open("GET", memeQuery, true);
+      request.responseType = "text";
       request.setRequestHeader("Content-Type", "application/json");
       request.send(memeQuery);
       request.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          var theRatings = request.responseText[0];
+          theRatings = request.responseText;
           var theRatingsData = JSON.parse(theRatings);
-          var firstElem = theRatingsData[0]; //not sure which one I was supposed to use, the array had a length of 2
+          var firstElem = theRatingsData[0];
           var joyRating = firstElem.joy;
           var sadRating = firstElem.sadness;
           var disgustRating = firstElem.disgust;
@@ -184,23 +150,35 @@ function rateMeme(emotions) {
           var fearRating = firstElem.fear;
           var surpriseRating = firstElem.surprise;
           var views = firstElem.views;
+          var compareButton = document.getElementById("avg-results-btn-span");
+          compareButton.innerHTML =
+            "<button type='button' class='btn btn-outline btn-info' data-toggle='modal' data-target='#avgResultsModal' style='color: rgb(211, 152, 113); text-shadow: none;'>Compare Yourself!</button>";
           var ratingsDisplay = document.getElementById("avgResults");
           ratingsDisplay.innerHTML =
             "Joy: " +
-            joyRating +
+            joyRating.toFixed(2) +
             "<br /> Sadness: " +
-            sadRating +
+            sadRating.toFixed(2) +
             "<br />" +
             "Disgust: " +
-            disgustRating +
+            disgustRating.toFixed(2) +
             "<br /> Anger: " +
-            angerRating +
+            angerRating.toFixed(2) +
             "<br /> Fear: " +
-            fearRating +
+            fearRating.toFixed(2) +
             "<br /> Surprise: " +
-            surpriseRating;
+            surpriseRating.toFixed(2);
         }
-        rate(oldId, joyRating, sadRating, disgustRating, angerRating, fearRating, surpriseRating, views);
+        rate(
+          oldId,
+          joyRating,
+          sadRating,
+          disgustRating,
+          angerRating,
+          fearRating,
+          surpriseRating,
+          views
+        );
         showResult();
       };
     }
@@ -232,34 +210,21 @@ function reset() {
   rated = false;
 }
 
-
-function rate(id, joyRating, sadRating, disgustRating, angerRating, fearRating, surpriseRating, views) {
-  // var theRatingsData = JSON.parse(theRatings);
-  // console.log(theRatingsData);
-  // var firstElem = theRatingsData[0];
-  // // var memeId = firstElem.meme;
-  // var joyRating = firstElem.joy;
-  // var sadRating = firstElem.sadness;
-  // var disgustRating = firstElem.disgust;
-  // var angerRating = firstElem.anger;
-  // var fearRating = firstElem.fear;
-  // var surpriseRating = firstElem.surprise;
-  // var viewCount = firstElem.views + 1;
+function rate(
+  id,
+  joyRating,
+  sadRating,
+  disgustRating,
+  angerRating,
+  fearRating,
+  surpriseRating,
+  views
+) {
   viewCount = views + 1;
 
   request = new XMLHttpRequest();
   request.open("PUT", "/rate", true);
   request.setRequestHeader("Content-Type", "application/json");
-  // request.send(
-  //   JSON.stringify({
-  //     meme: id,
-  //     joy: avgJoy,
-  //     sadness: avgSadness,
-  //     disgust: avgDisgust,
-  //     anger: avgAnger,
-  //     fear: avgFear,
-  //     surprise: avgSurprise
-  //   })
   request.send(
     JSON.stringify({
       meme: id,
@@ -272,6 +237,4 @@ function rate(id, joyRating, sadRating, disgustRating, angerRating, fearRating, 
       views: viewCount
     })
   );
-  console.log("response:");
-  console.log(request.responseText);
-};
+}

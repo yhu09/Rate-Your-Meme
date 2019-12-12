@@ -28,4 +28,7 @@ button.addEventListener("click", function(e) {
   var yourButton = document.getElementById("your-results-btn-span");
   yourButton.innerHTML =
     "<img class='loading-symbol' src='loading.gif' alt='Image not found'/>";
+  var compareButton = document.getElementById("avg-results-btn-span");
+  compareButton.innerHTML =
+    "<img class='loading-symbol' src='loading.gif' alt='Image not found'/>";
 });
