@@ -173,8 +173,30 @@ function rateMeme(emotions) {
       request.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           theRatings = request.responseText;
-          console.log(theRatings);
+          var theRatingsData = JSON.parse(theRatings);
+          var firstElem = theRatingsData[0]; //not sure which one I was supposed to use, the array had a length of 2
+          var joyRating = firstElem.joy;
+          var sadRating = firstElem.sadness;
+          var disgustRating = firstElem.disgust;
+          var angerRating = firstElem.anger;
+          var fearRating = firstElem.fear;
+          var surpriseRating = firstElem.surprise;
           // showHistory();
+          var ratingsDisplay = document.getElementById("avgResults");
+          ratingsDisplay.innerHTML =
+            "Joy: " +
+            joyRating +
+            "<br /> Sadness: " +
+            sadRating +
+            "<br />" +
+            "Disgust: " +
+            disgustRating +
+            "<br /> Anger: " +
+            angerRating +
+            "<br /> Fear: " +
+            fearRating +
+            "<br /> Suprise: " +
+            surpriseRating;
         }
       };
     }
