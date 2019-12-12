@@ -328,54 +328,11 @@
             "<br /> Surprise: " +
             surpriseRating.toFixed(2);
         }
-        // rate(
-        //   oldId,
-        //   joyRating,
-        //   sadRating,
-        //   disgustRating,
-        //   angerRating,
-        //   fearRating,
-        //   surpriseRating,
-        //   views
-        // );
-
-      }
-      
+      }     
 
 }
 
-function rate(
-  id,
-  joyRating,
-  sadRating,
-  disgustRating,
-  angerRating,
-  fearRating,
-  surpriseRating,
-  views
-) {
-  viewCount = views + 1;
 
-  request = new XMLHttpRequest();
-  request.open("PUT", "/rate", true);
-  request.setRequestHeader("Content-Type", "application/json");
-  request.send(
-    JSON.stringify({
-      meme: id,
-      joy: mathify(joyRating, avgJoy, viewCount),
-      sadness: mathify(sadRating, avgSadness, viewCount),
-      disgust: mathify(disgustRating, avgDisgust, viewCount),
-      anger: mathify(angerRating, avgAnger, viewCount),
-      fear: mathify(fearRating, avgFear, viewCount),
-      surprise: mathify(surpriseRating, avgSurprise, viewCount),
-      views: viewCount
-    })
-  );
-}
-
-function mathify(average, value, views) {
-  return (average = average + (value - average) / views);
-}
 
 
 
